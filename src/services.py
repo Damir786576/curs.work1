@@ -26,7 +26,7 @@ def write_to_json(file_path: str, data: List[Dict]) -> None:
 
 def main() -> None:
     """Основная функция для выполнения скрипта."""
-    file_path = "C:\\Users\\Zver\\Desktop\\pythonProject7\\data\\operations.xls"
+    file_path = "../data/operations.xls"
     json_output_path = "C:\\Users\\Zver\\Desktop\\pythonProject7\\src\\matching_transactions.json"
     query = input("Введите поисковый запрос: ")
 

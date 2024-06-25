@@ -105,7 +105,7 @@ def save_to_json(data: dict, file_path: str) -> None:
 def run_application() -> None:
     greeting = welcome_message(None)
     print(greeting)
-    transactions = load_xlsx_data("C:\\Users\\Zver\\Desktop\\pythonProject7\\data\\operations.xls")
+    transactions = load_xlsx_data("../data/operations.xls")
 
     # Анализ расходов
     total_expenses = sum_expenses(transactions)

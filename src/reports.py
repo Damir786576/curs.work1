@@ -66,7 +66,7 @@ def run_analysis(selected_category: str, date_for_report: str) -> None:
     keyword = input("Введите ключевое слово для поиска: ")
 
     transactions_json = find_transactions(keyword)
-    data_frame = pd.read_excel("C:\\Users\\Zver\\Desktop\\pythonProject7\\data\\operations.xls")
+    data_frame = pd.read_excel("../data/operations.xls")
     report_date = pd.to_datetime(date_for_report, format="%Y-%m-%d")
     expenses_json = calculate_expenses(data_frame, selected_category, report_date)
 
