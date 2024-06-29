@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Ключ для доступа к API
-SECRET_KEY = os.getenv("2a2bb6d5daa5c58f8871e1e8")
+SECRET_KEY = os.getenv('API_KEY')
 
 
 def welcome_message(time_str: str | None) -> str:
@@ -102,7 +102,7 @@ def save_to_json(data: dict, file_path: str) -> None:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
 
-def run_application() -> None:
+def main_views() -> None:
     greeting = welcome_message(None)
     print(greeting)
     transactions = load_xlsx_data("../data/operations.xls")
@@ -146,4 +146,4 @@ def run_application() -> None:
 
 
 if __name__ == "__main__":
-    run_application()
+    main_views()

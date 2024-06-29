@@ -40,7 +40,8 @@ class TestFinancialAnalysis(unittest.TestCase):
         )
 
         # Вызов функции для тестирования
-        result = calculate_expenses(mock_read_excel.return_value, "Переводы", datetime(2024, 3, 1))
+        result = calculate_expenses(mock_read_excel.return_value,
+                                    "Переводы", datetime(2024, 3, 1))
         # Проверка результата
         self.assertIn("Переводы", result)
         self.assertIn("Общие расходы", result)

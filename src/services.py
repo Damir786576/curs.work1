@@ -24,7 +24,7 @@ def write_to_json(file_path: str, data: List[Dict]) -> None:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-def main() -> None:
+def main_services() -> None:
     """Основная функция для выполнения скрипта."""
     file_path = "../data/operations.xls"
     json_output_path = "../src/matching_transactions.json"
@@ -40,4 +40,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main_services()

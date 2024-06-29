@@ -59,7 +59,7 @@ def calculate_expenses(data_frame: pd.DataFrame, selected_category: str, date_fo
     return calculation_result
 
 
-def run_analysis(selected_category: str, date_for_report: str) -> None:
+def main_reports(selected_category: str, date_for_report: str) -> None:
     """
     Запуск анализа транзакций и расчета расходов.
     """
@@ -74,4 +74,4 @@ def run_analysis(selected_category: str, date_for_report: str) -> None:
     print("Результаты расчета расходов:", expenses_json)
 
 
-run_analysis("Категория", "2024-06-22")
+main_reports("Категория", "2024-06-22")
