@@ -7,7 +7,7 @@ def find_transactions(keyword: str) -> str:
     """
     Поиск транзакций по ключевому слову.
     """
-    excel_path = "C:\\Users\\Zver\\Desktop\\pythonProject7\\data\\operations.xls"
+    excel_path = "../data/operations.xls"
     sheet_data = pd.read_excel(excel_path)
 
     sheet_data["Описание"] = sheet_data["Описание"].astype(str)
