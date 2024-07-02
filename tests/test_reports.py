@@ -11,7 +11,6 @@ class TestFinancialAnalysis(unittest.TestCase):
 
     @patch("pandas.read_excel")
     def test_find_transactions(self, mock_read_excel: MagicMock) -> None:
-        # Подготовка тестовых данных
         mock_read_excel.return_value = pd.DataFrame(
             {
                 "Описание": ["Перевод", "Оплата услуг", "Перевод"],
@@ -20,14 +19,11 @@ class TestFinancialAnalysis(unittest.TestCase):
             }
         )
 
-        # Вызов функции для тестирования
         result = find_transactions("Перевод")
-        # Проверка результата
         self.assertIn("Перевод", result)
 
     @patch("pandas.read_excel")
     def test_calculate_expenses(self, mock_read_excel: MagicMock) -> None:
-        # Подготовка тестовых данных
         mock_read_excel.return_value = pd.DataFrame(
             {
                 "Категория": ["Переводы", "Услуги", "Переводы"],
@@ -39,10 +35,7 @@ class TestFinancialAnalysis(unittest.TestCase):
             mock_read_excel.return_value["Дата платежа"], format="%d.%m.%Y"
         )
 
-        # Вызов функции для тестирования
-        result = calculate_expenses(mock_read_excel.return_value,
-                                    "Переводы", datetime(2024, 3, 1))
-        # Проверка результата
+        result = calculate_expenses(mock_read_excel.return_value, "Переводы", datetime(2024, 3, 1))
         self.assertIn("Переводы", result)
         self.assertIn("Общие расходы", result)
 

@@ -1,0 +1,104 @@
+{
+    "greeting": "Добрый день!",
+    "total_expenses": 9965776.83,
+    "card_usage": [
+        {
+            "end_digits": "*7197",
+            "spent": 2389912.729999984,
+            "bonus": 43888.0
+        },
+        {
+            "end_digits": "*5091",
+            "spent": 17367.500000000004,
+            "bonus": 507.0
+        },
+        {
+            "end_digits": "nan",
+            "spent": 5119397.48,
+            "bonus": 2038.0
+        },
+        {
+            "end_digits": "*4556",
+            "spent": 1768837.2400000007,
+            "bonus": 8777.0
+        },
+        {
+            "end_digits": "*1112",
+            "spent": 46207.08,
+            "bonus": 0.0
+        },
+        {
+            "end_digits": "*5507",
+            "spent": 84000.0,
+            "bonus": 0.0
+        },
+        {
+            "end_digits": "*6002",
+            "spent": 69200.0,
+            "bonus": 0.0
+        },
+        {
+            "end_digits": "*5441",
+            "spent": 470854.8,
+            "bonus": 0.0
+        }
+    ],
+    "largest_transactions": [
+        {
+            "date": "31.12.2021",
+            "amount": 160.89,
+            "category": "Супермаркеты",
+            "description": "Колхоз"
+        },
+        {
+            "date": "31.12.2021",
+            "amount": 64.0,
+            "category": "Супермаркеты",
+            "description": "Колхоз"
+        },
+        {
+            "date": "31.12.2021",
+            "amount": 118.12,
+            "category": "Супермаркеты",
+            "description": "Магнит"
+        },
+        {
+            "date": "31.12.2021",
+            "amount": 78.05,
+            "category": "Супермаркеты",
+            "description": "Колхоз"
+        },
+        {
+            "date": "31.12.2021",
+            "amount": 564.0,
+            "category": "Различные товары",
+            "description": "Ozon.ru"
+        }
+    ],
+    "currency_rates": {
+        "USD": 86.6548,
+        "EUR": 93.1136
+    },
+    "stock_prices": [
+        {
+            "stock": "AAPL",
+            "price": 216.75
+        },
+        {
+            "stock": "AMZN",
+            "price": 197.1999969482422
+        },
+        {
+            "stock": "GOOGL",
+            "price": 182.99000549316406
+        },
+        {
+            "stock": "MSFT",
+            "price": 456.7300109863281
+        },
+        {
+            "stock": "TSLA",
+            "price": 209.86000061035156
+        }
+    ]
+}
