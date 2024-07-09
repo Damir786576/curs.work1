@@ -3,6 +3,7 @@ from datetime import datetime
 from unittest.mock import MagicMock, patch
 
 import pandas as pd
+import pytest
 
 from src.reports import calculate_expenses, find_transactions
 
@@ -35,9 +36,21 @@ class TestFinancialAnalysis(unittest.TestCase):
             mock_read_excel.return_value["Дата платежа"], format="%d.%m.%Y"
         )
 
-        result = calculate_expenses(mock_read_excel.return_value, "Переводы", datetime(2024, 3, 1))
+        result = calculate_expenses(mock_read_excel.return_value, "Переводы",
+                                    datetime(2024, 3, 1))
         self.assertIn("Переводы", result)
         self.assertIn("Общие расходы", result)
+
+
+def test_find_transactions_exception(monkeypatch):
+    def mock_raise(*_, **__):
+        raise Exception("Ошибка чтения файла")
+
+    monkeypatch.setattr("pandas.read_excel", mock_raise)
+
+    with pytest.raises(Exception) as e:
+        find_transactions("Перевод")
+    assert "Ошибка чтения файла" in str(e.value)
 
 
 if __name__ == "__main__":

@@ -43,5 +43,62 @@ def test_write_to_json(mock_json_dump: Any, mock_open: Any, sample_transactions:
     mock_json_dump.assert_called_once()
 
 
+@patch("pandas.read_excel")
+def test_read_transactions_xls_empty_file(mock_read_excel: Any) -> None:
+    mock_read_excel.return_value.to_dict.return_value = {}
+    mock_read_excel.return_value.to_dict.side_effect = lambda orient: [] if orient == 'records' else {}
+    result = read_transactions_xls("dummy_path")
+    assert result == []
+
+
+@patch("pandas.read_excel")
+def test_read_transactions_xls_file_not_found(mock_read_excel: Any) -> None:
+    mock_read_excel.side_effect = FileNotFoundError("Файл не найден")
+    with pytest.raises(FileNotFoundError):
+        read_transactions_xls("non_existent_path")
+
+
+@patch("logging.info")
+def test_logging_on_successful_read(mock_logging_info: Any, sample_transactions: List[Dict[str, Any]]) -> None:
+    with patch("pandas.read_excel") as mock_read_excel:
+        mock_read_excel.return_value.to_dict.return_value = sample_transactions
+        read_transactions_xls("dummy_path")
+        mock_logging_info.assert_called_with("Транзакции успешно прочитаны из файла.")
+
+
+@pytest.mark.parametrize(
+    "query, expected_count",
+    [
+        ("", 0),
+        ("Не существующее описание", 0),
+    ],
+)
+def test_search_by_description_edge_cases(sample_transactions: List[Dict[str, Any]], query: str,
+                                          expected_count: int) -> None:
+    result = search_by_description(sample_transactions, query)
+    assert len(result) == expected_count, f"Ожидалось {expected_count}, получено {len(result)}"
+
+
+def test_read_transactions_xls_exception_handling() -> None:
+    with pytest.raises(Exception):
+        read_transactions_xls("invalid_path")
+
+
+def test_write_to_json_exception_handling(sample_transactions: List[Dict[str, Any]]) -> None:
+    with pytest.raises(Exception):
+        write_to_json("/invalid_path", sample_transactions)
+
+
+@patch("logging.error")
+def test_logging_on_error(mock_logging_error: Any) -> None:
+    with patch("pandas.read_excel") as mock_read_excel:
+        mock_read_excel.side_effect = Exception("Ошибка")
+        try:
+            read_transactions_xls("dummy_path")
+        except Exception:
+            pass
+        mock_logging_error.assert_called_with("Ошибка при чтении файла: Ошибка")
+
+
 if __name__ == "__main__":
     pytest.main()

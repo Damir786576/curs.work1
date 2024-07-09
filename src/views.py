@@ -39,11 +39,14 @@ def welcome_message(time_str: str | None) -> str:
         raise
 
 
-def sum_expenses(df: pd.DataFrame) -> Any:
+def sum_expenses(df: pd.DataFrame) -> float:
     logging.info("Функция sum_expenses вызвана")
     """Считает сумму расходов из DataFrame операций."""
     try:
-        expenses = df[df["Сумма операции"] < 0]["Сумма операции"].abs().sum()
+        if "Сумма операции" in df.columns:
+            expenses = df[df["Сумма операции"] < 0]["Сумма операции"].abs().sum()
+        else:
+            expenses = 0.0
         return expenses
     except Exception as e:
         logging.error(f"Ошибка в функции sum_expenses: {e}")

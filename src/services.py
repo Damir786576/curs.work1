@@ -23,12 +23,14 @@ def read_transactions_xls(file_path: str) -> List[Dict]:
 
 def search_by_description(transactions: List[Dict], query: str) -> List[Dict]:
     """Ищет транзакции, соответствующие данному описанию запроса."""
+    if query == "":
+        return []
     try:
         pattern = re.compile(re.escape(query), re.IGNORECASE)
         matching_transactions = [
             transaction for transaction in transactions if pattern.search(transaction["Описание"])
         ]
-        logging.info(f"Найдено {len(matching_transactions)} транзакций по запросу.")
+        logging.info(f"Найдено {len(matching_transactions)} транзакций по запросу: '{query}'.")
         return matching_transactions
     except Exception as e:
         logging.error(f"Ошибка при поиске транзакций: {e}")
@@ -36,11 +38,12 @@ def search_by_description(transactions: List[Dict], query: str) -> List[Dict]:
 
 
 def write_to_json(file_path: str, data: List[Dict]) -> None:
-    """Записывает данные в JSON файл."""
+    """Записывает данные в JSON файл и выводит их в консоль."""
     try:
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=4)
         logging.info(f"Данные успешно записаны в файл {file_path}.")
+        print(json.dumps(data, ensure_ascii=False, indent=4))
     except Exception as e:
         logging.error(f"Ошибка при записи в файл: {e}")
         raise
