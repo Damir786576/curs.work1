@@ -36,8 +36,7 @@ class TestFinancialAnalysis(unittest.TestCase):
             mock_read_excel.return_value["Дата платежа"], format="%d.%m.%Y"
         )
 
-        result = calculate_expenses(mock_read_excel.return_value, "Переводы",
-                                    datetime(2024, 3, 1))
+        result = calculate_expenses(mock_read_excel.return_value, "Переводы", datetime(2024, 3, 1))
         self.assertIn("Переводы", result)
         self.assertIn("Общие расходы", result)
 

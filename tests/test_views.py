@@ -114,14 +114,16 @@ def test_sum_expenses_no_transactions():
 
 
 def test_analyze_card_usage_multiple_cards(card_operations_data: List[Dict[str, Any]]):
-    card_operations_data.extend([
-        {"Номер карты": 1234567890123457, "Сумма операции": -200.0, "Бонусы (включая кэшбэк)": 20.0},
-        {"Номер карты": 1234567890123458, "Сумма операции": -300.0, "Бонусы (включая кэшбэк)": 30.0}
-    ])
+    card_operations_data.extend(
+        [
+            {"Номер карты": 1234567890123457, "Сумма операции": -200.0, "Бонусы (включая кэшбэк)": 20.0},
+            {"Номер карты": 1234567890123458, "Сумма операции": -300.0, "Бонусы (включая кэшбэк)": 30.0},
+        ]
+    )
     expected_result = [
         {"end_digits": "23456", "spent": 100.0, "bonus": 10.0},
         {"end_digits": "23457", "spent": 200.0, "bonus": 20.0},
-        {"end_digits": "23458", "spent": 300.0, "bonus": 30.0}
+        {"end_digits": "23458", "spent": 300.0, "bonus": 30.0},
     ]
     actual_result = analyze_card_usage(card_operations_data)
     assert actual_result == expected_result

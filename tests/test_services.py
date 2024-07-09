@@ -46,7 +46,7 @@ def test_write_to_json(mock_json_dump: Any, mock_open: Any, sample_transactions:
 @patch("pandas.read_excel")
 def test_read_transactions_xls_empty_file(mock_read_excel: Any) -> None:
     mock_read_excel.return_value.to_dict.return_value = {}
-    mock_read_excel.return_value.to_dict.side_effect = lambda orient: [] if orient == 'records' else {}
+    mock_read_excel.return_value.to_dict.side_effect = lambda orient: [] if orient == "records" else {}
     result = read_transactions_xls("dummy_path")
     assert result == []
 
@@ -73,8 +73,9 @@ def test_logging_on_successful_read(mock_logging_info: Any, sample_transactions:
         ("Не существующее описание", 0),
     ],
 )
-def test_search_by_description_edge_cases(sample_transactions: List[Dict[str, Any]], query: str,
-                                          expected_count: int) -> None:
+def test_search_by_description_edge_cases(
+    sample_transactions: List[Dict[str, Any]], query: str, expected_count: int
+) -> None:
     result = search_by_description(sample_transactions, query)
     assert len(result) == expected_count, f"Ожидалось {expected_count}, получено {len(result)}"
 
