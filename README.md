@@ -1,52 +1,52 @@
-# Курсовой проект
+# Course project
 
-## Основные функции
+### Main Functions
 
-### Главная страница
-На главной странице сервиса пользователи могут получить следующую информацию в формате JSON:
-- Приветствие, соответствующее текущему времени суток.
-- Данные по каждой банковской карте:
-  - Последние 4 цифры карты.
-  - Общая сумма расходов.
-  - Кешбэк (1 рубль на каждые 100 рублей).
-- Топ-5 транзакций по сумме платежа.
-- Курс валют.
-- Стоимость акций из индекса S&P500.
+### Home page
+On the main page of the service users can get the following information in JSON format:
+- A greeting corresponding to the current time of day.
+- Data for each bank card:
+  - Last 4 digits of the card.
+  - Total amount of expenses.
+  - Cashback (1 ruble for every 100 rubles).
+- Top 5 transactions by payment amount.
+- Exchange rate.
+- Value of stocks from the S&P500 index.
 
-### Сервисы
-#### Простой поиск
-Траты по задоному описанию
+### Services
+#### Simple search
+Spending by title
 
-#### Отсчеты
-##### Траты по категории
-Траты по заданым категориям
+#### Counts
+##### Spending by category
+Spending by category
 
-## Модули
+### Modules
 
-### Модуль `views`
-#### Функции:
-- `welcome_message`: Возвращает приветственное сообщение в зависимости от времени суток.
-- `sum_expenses`: Считает сумму расходов из списка операций.
-- `load_xlsx_data`: Загружает данные из Excel файла.
-- `analyze_card_usage`: Анализирует использование карт по операциям.
-- `largest_transactions`: Возвращает пять самых крупных транзакций.
-- `fetch_currency_value`: Получает курс валюты к рублю.
-- `get_stock_currency`: Получает текущую цену акции.
-- `execute_main`: Основная функция, выполняющая анализ данных.
-- `save_to_json`: Сохраняет данные в JSON-файл.
-- `run_application`: Запускает приложение.
+### Module `views`
+#### Functions:
+- `welcome_message`: Returns a welcome message based on the time of day.
+- `sum_expenses`: Calculates the amount of expenses from the list of transactions.
+- `load_xlsx_data`: Loads data from an Excel file.
+- `analyze_card_usage`: Analyzes card usage by transactions.
+- `largest_transactions`: Returns the five largest transactions.
+- `fetch_currency_value`: Retrieves the exchange rate of a currency against the ruble.
+- `get_stock_currency`: Gets the current price of a stock.
+- `execute_main`: The main function that performs data analysis.
+- `save_to_json`: Saves the data to a JSON file.
+- `run_application`: Starts the application.
 
-### Модуль `reports`
-#### Функции:
-- `find_transactions`: Поиск транзакций по ключевому слову и сохранение результатов в JSON файл.
-- `calculate_expenses`: Расчет расходов по выбранной категории за определенный период времени.
-- `run_analysis`: Запуск анализа транзакций и расчета расходов, вывод результатов в консоль.
+### Module `reports`.
+#### Functions:
+- `find_transactions`: Searches for transactions by keyword and saves the results to a JSON file.
+- `calculate_expenses`: Calculate expenses for the selected category for a certain period of time.
+- `run_analysis`: Start analyzing transactions and calculating expenses, output the results to the console.
 
-### Модуль `services`
-#### Функции:
-- `read_transactions_xls`: Читает финансовые транзакции из XLSX файла и возвращает их в виде списка словарей.
-- `search_by_description`: Ищет транзакции, соответствующие данному описанию запроса, и возвращает список найденных транзакций.
-- `write_to_json`: Записывает данные в JSON файл, что позволяет легко передавать и хранить результаты поиска.
+### Module `services`.
+#### Functions:
+- `read_transactions_xls`: Reads financial transactions from an XLSX file and returns them as a dictionary list.
+- `search_by_description`: Searches for transactions matching the given query description and returns a list of transactions found.
+- `write_to_json`: Writes the data to a JSON file, allowing you to easily transfer and store the search results.
 
-### Переменные окружения
-- Можно получить в файле api.env
+#### Environment Variables.
+- Can be got from the api.env file.
